@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="HLWpf.SerialCore"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HLWpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="150" Initialized="UserControl_Initialized">
+    <Grid Background="#FF93DAD7">
+        <StackPanel Margin="5">
+            <Label Content="串口号：" Margin="5,5,5,0" FontSize="18" ToolTip="点击文本刷新串口"  Background="{x:Null}" BorderBrush="White" />
+            <ComboBox x:Name="combo_port"  Margin="5,0,5,5" FontSize="16" BorderBrush="{x:Null}">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFD4D4D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Label Content="波特率：" Margin="5,0"  FontSize="18"/>
+            <ComboBox x:Name="combo_baud"  Margin="5,0,5,5"  FontSize="16" BorderBrush="{x:Null}"/>
+            <Button x:Name="btn_serial_open" Content="打开串口"  Margin="5" FontSize="18" BorderBrush="Black" Foreground="White" Click="Btn_serial_open_Click" Background="#FFBB2A2A" />
+        </StackPanel>
+    </Grid>
+</UserControl>

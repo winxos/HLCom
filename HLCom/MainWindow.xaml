@@ -1,0 +1,64 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HLCom"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="HLCom.MainWindow"
+        mc:Ignorable="d"
+        Title="HLCom" Height="480" Width="800" Background="White" Loaded="Window_Loaded">
+    <Grid Background="#FF99ddee">
+        <DockPanel HorizontalAlignment="Stretch" Margin="5">
+            <Expander Header="设置" Margin="5" IsExpanded="True" ExpandDirection="Right" DockPanel.Dock="Left" Opacity="0.8">
+                <StackPanel Margin="5">
+                    <Expander Header="串口设置" MaxWidth="300" IsExpanded="True">
+                        <StackPanel>
+                            <Label Content="串口号：" Margin="5,5,5,0" FontSize="14" ToolTip="点击文本刷新串口" Foreground="#FF005DE4" Background="{x:Null}" BorderBrush="White" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+                            <ComboBox x:Name="combo_port"  Margin="5,0,5,5" FontSize="14" BorderBrush="{x:Null}"/>
+                            <Label Content="波特率：" Margin="5,0"  FontSize="14"/>
+                            <ComboBox x:Name="combo_baud"  Margin="5,0,5,5"  FontSize="14" BorderBrush="{x:Null}"/>
+                            <Button x:Name="btn_serial_open" Content="打开串口"  Margin="5" FontSize="18" Background="#FFEAEAEA" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click" />
+                        </StackPanel>
+                    </Expander>
+                    <Expander Header="HL系列IAP">
+
+                    </Expander>
+                    <Expander Header="HL系列调试">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="14">设备地址:</Label>
+                                <TextBox x:Name="device_addr" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="30" FontSize="14">1</TextBox>
+                            </StackPanel>
+                            <Button Click="Button_Click_2" FontSize="14">获取设备信息</Button>
+                            <Button FontSize="14" Click="Button_Click_3">设备可视化</Button>
+                        </StackPanel>
+                    </Expander>
+                    <Expander Header="TCP/UDP调试"/>
+                </StackPanel>
+            </Expander>
+            <DockPanel>
+                <StackPanel Margin="5" DockPanel.Dock="Bottom">
+                    <Label Content="发送历史" Margin="5,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="list_history"  Height="62" Margin="5,0,5,5" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="#FFE4E4E4"/>
+                    <WrapPanel Orientation="Horizontal">
+                        <CheckBox x:Name="chk_hex" Content="十六进制发送" Margin="5" VerticalAlignment="Center" ToolTip="格式：aa bb cc dd"/>
+                        <CheckBox x:Name="chkbox_hex_show" Content="十六进制显示" Margin="5" VerticalAlignment="Center"/>
+                        <Label Content="加校验:" Margin="5" VerticalAlignment="Center" />
+                        <ComboBox x:Name="combo_check" Margin="5" VerticalAlignment="Center" Width="60" BorderBrush="{x:Null}"/>
+                    </WrapPanel>
+                    <DockPanel>
+                        <Button Content="发送" Margin="5" DockPanel.Dock="Right"  FontSize="18" Background="#FFE8E8E8" BorderBrush="{x:Null}" Click="Button_Click_1"/>
+                        <TextBox x:Name="text_input" HorizontalAlignment="Stretch"  Margin="5" Text="" Background="#FFC3C3C3"/>
+                    </DockPanel>
+                </StackPanel>
+                <DataGrid x:Name="list_rec" Margin="10,10,10,0" ItemsSource="{Binding}"  AutoGenerateColumns="False" BorderBrush="{x:Null}" Background="#FFF1F1F1" GridLinesVisibility="Horizontal" IsReadOnly="True" SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="序号" FontSize="14" Binding="{Binding ID}" />
+                        <DataGridTextColumn Header="时间" FontSize="14" Binding="{Binding Time,StringFormat=\{0:HH:mm:ss.fff\}}"/>
+                        <DataGridTextColumn Header="数据" FontSize="14" Binding="{Binding StrData}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

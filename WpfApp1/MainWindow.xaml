@@ -1,0 +1,30 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:HLWpf="clr-namespace:HLWpf;assembly=HLWpf" x:Class="WpfApp1.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="586" Width="817" Loaded="Window_Loaded">
+    <Grid>
+        <DockPanel>
+            <HLWpf:SerialCore x:Name="serial_core"></HLWpf:SerialCore>
+            <TabControl>
+                <TabItem Header="HL0401 GUI">
+                    <HLWpf:HL0401 x:Name="serial_0401" DockPanel.Dock="Bottom"></HLWpf:HL0401>
+                </TabItem>
+                <TabItem Header="terminal">
+                    <HLWpf:SerialUI x:Name="serial_ui" DockPanel.Dock="Top"></HLWpf:SerialUI>
+                </TabItem>
+                <TabItem Header="HL0002">
+                    <HLWpf:HL0002 x:Name="hl0002"></HLWpf:HL0002>
+                </TabItem>
+                <TabItem Header="HL0601">
+                    <HLWpf:HL0601 Name="hl0601"></HLWpf:HL0601>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+
+    </Grid>
+</Window>
